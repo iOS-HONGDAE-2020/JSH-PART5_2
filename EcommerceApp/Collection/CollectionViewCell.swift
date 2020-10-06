@@ -15,6 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var textLable: UILabel!
     @IBOutlet weak var secondLable: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var rankColor2: UIImageView!
     
     
 //    required init?(coder aDecoder: NSCoder) {
@@ -31,6 +32,17 @@ class CollectionViewCell: UICollectionViewCell {
             textLable.text = movie.title
             secondLable.text = "평점 : \(self.movie.user_rating)"
             dateLabel.text = movie.date
+            
+            let movieGrade = self.movie.grade
+            if movieGrade == 19 {
+                rankColor2.image = UIImage(named: "ic_19")
+            } else if movieGrade == 15 {
+                rankColor2.image = UIImage(named: "ic_15")
+            } else if movieGrade == 12 {
+                rankColor2.image = UIImage(named: "ic_12")
+            } else {
+                rankColor2.image = UIImage(named: "ic_allages")
+            }
         }
     }
     
@@ -48,8 +60,8 @@ class CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-//    static func nib() -> UINib {
-//        return UINib(nibName: "CollectionViewCell", bundle: nil)
-//    }
+    static func nib() -> UINib {
+        return UINib(nibName: "CollectionViewCell", bundle: nil)
+    }
 
 }

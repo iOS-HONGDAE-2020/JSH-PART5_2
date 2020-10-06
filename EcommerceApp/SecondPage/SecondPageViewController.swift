@@ -11,16 +11,21 @@ import Alamofire
 
 class SecondPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var titleName: String? = ""
     var movieInfoss: [MovieInfo] = []
     @IBOutlet weak var tableView: UITableView!
     let urls = "http://connect-boxoffice.run.goorm.io/movie?id=5a54c286e8a71d136fb5378e"
     var movies: Movie!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.title = titleName
+        
         tableViewSettings()
         fetchMovies()
+        
         
         self.tableView.rowHeight = 800
 
@@ -43,13 +48,6 @@ class SecondPageViewController: UIViewController, UITableViewDelegate, UITableVi
                 tableView.reloadData()
                 print(movieInfoss)
             }
-//        AF.request(urls).validate()
-//            .responseDecodable(of: MovieInfo.self) { [self] (response) in
-//            guard let movieInfos = response.value else { return }
-//            self.MovieInfo = movieInfos
-//            print(movieInfos.date)
-//            tableView.reloadData()
-//          }
     }
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,8 +61,8 @@ class SecondPageViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func commentTapButton(_sender: Any) {
-//        let vc = self.storyboard?.instantiateViewController(identifier: "ThirdViewController") as! ThirdViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(identifier: "ThirdViewController") as! ThirdViewController
+        self.navigationController?.pushViewController(vc, animated: true)
         print("hello")
     }
     

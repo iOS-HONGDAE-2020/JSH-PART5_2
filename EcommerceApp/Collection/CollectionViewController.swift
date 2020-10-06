@@ -27,10 +27,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
        
         setupcollectionView()
         
-        self.tabBarController?.tabBar.items?[0].title = "tab 1"
-        self.tabBarController?.tabBar.items?[1].title = "tab 2"
-        
-        //title
+        // title
         titleChange(title: "예매율순")
         fetchMovies(urls: url)
 
@@ -131,6 +128,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(identifier: "SecondPageViewController") as! SecondPageViewController
         vc.movies = movies[indexPath.row]
+        vc.titleName = movies[indexPath.row].title
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

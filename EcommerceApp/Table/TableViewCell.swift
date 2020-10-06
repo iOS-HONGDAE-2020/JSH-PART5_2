@@ -18,6 +18,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var thirdLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var rankColor: UIImageView!
     
     var movie: Movie! {
         didSet {
@@ -31,8 +32,21 @@ class TableViewCell: UITableViewCell {
             secondLabel.text = "예매순위 : \(self.movie.reservation_grade)"
             thirdLabel.text = "예매율 : \(self.movie.reservation_rate)"
             dateLabel.text = "개봉일 : \(self.movie.date)"
+            
+            let movieGrade = self.movie.grade
+            if movieGrade == 19 {
+                rankColor.image = UIImage(named: "ic_19")
+            } else if movieGrade == 15 {
+                rankColor.image = UIImage(named: "ic_15")
+            } else if movieGrade == 12 {
+                rankColor.image = UIImage(named: "ic_12")
+            } else {
+                rankColor.image = UIImage(named: "ic_allages")
+            }
         }
     }
+    
+  
     
     override func awakeFromNib() {
         super.awakeFromNib()

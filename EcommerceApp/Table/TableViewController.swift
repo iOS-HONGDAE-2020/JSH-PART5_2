@@ -94,8 +94,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(identifier: "SecondPageViewController") as! SecondPageViewController
         vc.movies = movies[indexPath.row]
+        vc.titleName = movies[indexPath.row].title
         self.navigationController?.pushViewController(vc, animated: true)
-        print("sss")
+        
     }
 
     /*
